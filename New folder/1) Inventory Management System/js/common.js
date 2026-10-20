@@ -1,5 +1,7 @@
 // Shared sidebar code for dashboard, purchase and sell pages
 
+import supabase from "./credential.js";
+
 // ================= Get elements =================
 const sidebar = document.getElementById("sidebar");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
@@ -23,8 +25,11 @@ navSell.onclick = () => {
   window.location.href = "sell.html";
 };
 
-logoutBtn.onclick = () => {
-  window.location.href = "login.html";
+logoutBtn.onclick = async () => {
+  try {
+    await supabase.auth.signOut();
+    window.location.href = "login.html";
+  } catch (error) {}
 };
 
 // ================= Mobile sidebar =================
@@ -38,3 +43,14 @@ const toggleSidebar = () => {
 
 menuToggle.onclick = toggleSidebar;
 sidebarOverlay.onclick = toggleSidebar;
+
+const checkAuthentication = async () => {
+  try {
+    const { data, error } = await supabase.auth.getUser();
+    if (error || data.user === null) {
+      window.location.href = "login.html";
+    }
+  } catch (error) {}
+};
+
+export default checkAuthentication;
