@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase - Inventory Manager</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/purchase.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">Inventory Manager</div>
+        <nav>
+          <button type="button" id="navDashboard" class="nav-link">
+            Dashboard
+          </button>
+          <button type="button" id="navPurchase" class="nav-link active">
+            Purchase
+          </button>
+          <button type="button" id="navSell" class="nav-link">Sell</button>
+        </nav>
+        <button type="button" id="logoutBtn" class="nav-link logout">
+          Log out
+        </button>
+      </aside>
+
+      <div id="sidebarOverlay" class="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" id="menuToggle" class="menu-toggle">
+            &#9776;
+          </button>
+          <h1>Purchase</h1>
+          <div class="user">Ali</div>
+        </header>
+
+        <div class="panel">
+          <h3>New purchase</h3>
+          <form id="purchaseForm" class="form-grid">
+            <div class="full">
+              <label for="purchaseProduct">Product name</label>
+              <input
+                type="text"
+                id="purchaseProduct"
+                placeholder="Product name"
+              />
+            </div>
+            <div>
+              <label for="purchaseQty">Quantity</label>
+              <input type="number" id="purchaseQty" placeholder="0" min="1" />
+            </div>
+            <div>
+              <label for="purchasePrice">Price (Rs)</label>
+              <input type="number" id="purchasePrice" placeholder="0" min="0" />
+            </div>
+            <div class="full">
+              <label for="purchaseTotal">Total (Rs)</label>
+              <input type="number" id="purchaseTotal" value="0" disabled />
+            </div>
+            <div class="full btn-group">
+              <button
+                type="button"
+                id="purchaseClearBtn"
+                class="btn btn-light"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                id="purchaseSaveBtn"
+                class="btn btn-primary"
+              >
+                Save purchase
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Recent purchases</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="purchaseTableBody">
+
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="js/purchase.js"></script>
+  </body>
+</html>

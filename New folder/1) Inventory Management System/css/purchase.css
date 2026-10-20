@@ -1,0 +1,26 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 18px;
+}
+
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+input:disabled {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* table: sab columns barabar chaude */
+table {
+  table-layout: fixed;
+  min-width: 600px;
+}
+
+@media (max-width: 800px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
